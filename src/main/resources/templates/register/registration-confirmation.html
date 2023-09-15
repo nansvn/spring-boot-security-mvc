@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Registration Confirmation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+<div>
+    <h2>Registered successfully</h2>
+    <!-- display first name, last name and email -->
+    <ul>
+        <li th:text="'Username: ' + ${registerUser.userName}"></li>
+        <li th:text="'First name: ' + ${registerUser.firstName}"></li>
+        <li th:text="'Last name: ' + ${registerUser.lastName}"></li>
+        <li th:text="'Email: ' + ${registerUser.email}"></li>
+    </ul>
+    <hr>
+    <a th:href="@{/showMyLoginPage}">Login with username</a>
+</div>
+</body>
+
+</html>

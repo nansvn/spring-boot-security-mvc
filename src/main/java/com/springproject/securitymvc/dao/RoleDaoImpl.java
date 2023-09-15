@@ -14,10 +14,11 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public Role findRoleByName(String theRoleName) {
 		// retrieve/read from database using name
-		TypedQuery<Role> theQuery = entityManager.createQuery("from Role where name=:roleName", Role.class);
+		TypedQuery<Role> theQuery = entityManager.createQuery(
+				"from Role where name=:roleName", Role.class);
 		theQuery.setParameter("roleName", theRoleName);
 		
-		Role theRole = null;
+		Role theRole;
 		
 		try {
 			theRole = theQuery.getSingleResult();

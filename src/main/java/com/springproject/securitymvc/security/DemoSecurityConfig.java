@@ -2,7 +2,6 @@ package com.springproject.securitymvc.security;
 
 
 import com.springproject.securitymvc.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,13 +12,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class DemoSecurityConfig {
 
-    //bcrypt bean definition
+    // bcrypt bean definition
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    //authenticationProvider bean definition
+    // authenticationProvider bean definition
     @Bean
     public DaoAuthenticationProvider authenticationProvider(UserService userService) {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
@@ -31,11 +30,12 @@ public class DemoSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests(configurer ->
-                        configurer
+        http.authorizeHttpRequests(auth ->
+                        auth
                                 .requestMatchers("/").hasRole("EMPLOYEE")
                                 .requestMatchers("/managers/**").hasRole("MANAGER")
                                 .requestMatchers("/admins/**").hasRole("ADMIN")
+                                .requestMatchers("/register/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form ->
@@ -44,7 +44,9 @@ public class DemoSecurityConfig {
                                 .loginProcessingUrl("/authenticate")
                                 .permitAll()
                 )
-                .logout(logout -> logout.permitAll()
+                .logout(logout -> logout
+                        .permitAll()
+                        .logoutSuccessUrl("/")
                 )
                 .exceptionHandling(configurer ->
                         configurer.accessDeniedPage("/access-denied")

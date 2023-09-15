@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <title>Login Page</title>
@@ -16,7 +16,6 @@
 
     <div id="loginbox" style="margin-top: 50px;"
          class="col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
-
         <div class="card border-info">
 
             <div class="card-header bg-info">
@@ -56,12 +55,16 @@
 
                         <!-- User name -->
                         <div style="margin-bottom: 25px" class="input-group">
-                            <input type="text" name="username" placeholder="username" class="form-control">
+                            <label>
+                                <input type="text" name="username" placeholder="username" class="form-control">
+                            </label>
                         </div>
 
                         <!-- Password -->
                         <div style="margin-bottom: 25px" class="input-group">
-                            <input type="password" name="password" placeholder="password" class="form-control">
+                            <label>
+                                <input type="password" name="password" placeholder="password" class="form-control">
+                            </label>
                         </div>
 
                         <!-- Login/Submit Button -->
@@ -76,6 +79,11 @@
 
             </div>
 
+        </div>
+        <div>
+            <a th:href="@{/register/registration-form}"
+               class="btn btn-primary mt-3" role="button"
+               aria-pressed="true">Register New User</a>
         </div>
     </div>
 
