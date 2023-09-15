@@ -3,15 +3,13 @@ package com.springproject.securitymvc.dao;
 import com.springproject.securitymvc.entity.Role;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class RoleDaoImpl implements RoleDao {
-	private EntityManager entityManager;
-
-	public RoleDaoImpl(EntityManager theEntityManager) {
-		entityManager = theEntityManager;
-	}
+	private final EntityManager entityManager;
 
 	@Override
 	public Role findRoleByName(String theRoleName) {

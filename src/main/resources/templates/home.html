@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <h1>Welcome</h1>
-    <p>Welcome to the company homepage</p>
+    <p>Welcome to the company main page</p>
 
     <hr>
 
@@ -30,7 +30,7 @@
 
     <div sec:authorize="hasRole('ADMIN')">
         <p>
-            <a th:href="@{/admins}">Amin page</a>
+            <a th:href="@{/admins}">Admin page</a>
         </p>
     </div>
 

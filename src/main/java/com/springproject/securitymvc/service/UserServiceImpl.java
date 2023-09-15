@@ -4,6 +4,7 @@ import com.springproject.securitymvc.entity.Role;
 import com.springproject.securitymvc.entity.User;
 import com.springproject.securitymvc.dao.RoleDao;
 import com.springproject.securitymvc.dao.UserDao;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,17 +16,11 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-	private UserDao userDao;
-
-	private RoleDao roleDao;
-
-	@Autowired
-	public UserServiceImpl(UserDao userDao, RoleDao roleDao) {
-		this.userDao = userDao;
-		this.roleDao = roleDao;
-	}
+	private final UserDao userDao;
+	private final RoleDao roleDao;
 
 	@Override
 	public User findByUserName(String userName) {
